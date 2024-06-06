@@ -1,6 +1,15 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<?php
+
+include_once('config/database.php');
+
+?>
+
+<html lang="pt-br">
 <head>
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Afazeres</title>
@@ -20,8 +29,22 @@
                     </tr>
                 </thead>
                 <tbody>
+
+               <?php 
+$rs= $con->query ("SELECT * FROM afazeres");
+while ($row = $rs->fetch(PDO::FETCH_OBJ)) {
+    echo '                    <tr class="border-b">
+                        <td class="py-2 px-4 text-sm text-gray-700">'. $row->titulo.' </td>
+                        <td class="py-2 px-4 text-sm text-gray-700"> '. $row->descricao.'</td>
+                        <td class="py-2 px-4 text-sm text-gray-700">'. $row->status.'</td>
+                        <td class="py-2 px-4 text-sm text-gray-700">22/05/2024</td>
+                    </tr>';
+}
+
+?>
+
                     <tr class="border-b">
-                        <td class="py-2 px-4 text-sm text-gray-700">Estudar Matemática</td>
+                        <td class="py-2 px-4 text-sm text-gray-700"></td>
                         <td class="py-2 px-4 text-sm text-gray-700">Revisar álgebra linear</td>
                         <td class="py-2 px-4 text-sm text-gray-700">Pendente</td>
                         <td class="py-2 px-4 text-sm text-gray-700">22/05/2024</td>
@@ -44,4 +67,8 @@
         </div>
     </div>
 </body>
+
+
 </html>
+
+
